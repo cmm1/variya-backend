@@ -1,0 +1,18 @@
+# IntelliJ IDEA #
+.idea/
+/.idea/
+*/.idea/
+*.iml
+
+
+# Java class files
+*.class
+
+
+### user ###
+target/
+/target/
+/src/logs/
+
+
+
