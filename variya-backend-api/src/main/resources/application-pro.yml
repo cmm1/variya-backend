@@ -13,9 +13,6 @@ server:
 
 
 spring:
-  profiles:
-    active: dev
-    #active: pro
   ############################################################
   #
   # 配置数据源信息
@@ -36,30 +33,3 @@ spring:
       pool-name: DateSourceHikariCP # 连接池名字
       max-lifetime: 1800000 # 连接的生命时长（毫秒），超时而且没被使用则被释放（retired），默认:30分钟
       connection-test-query: SELECT 1
-############################################################
-#
-# mybatis-plus 配置
-#
-############################################################
-mybatis:
-  type-aliases-package: com.zyp.pojo # 所有POJO类所在包路径
-  mapper-locations: classpath:mapper/*.xml # mapper映射文件
-
-############################################################
-#
-# knife4j
-#
-############################################################
-knife4j:
-  enable: true
-  openapi:
-    title: api文档
-    description: "api文档"
-    email: qq1036641205@163.com
-############################################################
-#
-# logback日志
-#
-############################################################
-logging:
-  config: classpath:logback-spring.xml
