@@ -9,12 +9,13 @@ server:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
 
-############################################################
-#
-# 配置数据源信息
-#
-############################################################
+
 spring:
+  ############################################################
+  #
+  # 配置数据源信息
+  #
+  ############################################################
   datasource: # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource # 数据源类型：HikariCP
     driver-class-name: com.mysql.cj.jdbc.Driver # mysql驱动
@@ -38,3 +39,15 @@ spring:
 mybatis:
   type-aliases-package: com.zyp.pojo # 所有POJO类所在包路径
   mapper-locations: classpath:mapper/*.xml # mapper映射文件
+
+############################################################
+#
+# knife4j
+#
+############################################################
+knife4j:
+  enable: true
+  openapi:
+    title: api文档
+    description: "api文档"
+    email: qq1036641205@163.com
