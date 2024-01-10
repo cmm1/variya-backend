@@ -2,7 +2,7 @@ package com.zyp.core;
 
 
 
-import consts.ResultCodeConst;
+import com.zyp.consts.ResultCodeConst;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

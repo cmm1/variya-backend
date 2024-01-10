@@ -1,4 +1,4 @@
-package consts;
+package com.zyp.consts;
 
 /**
  * 状态码枚举
