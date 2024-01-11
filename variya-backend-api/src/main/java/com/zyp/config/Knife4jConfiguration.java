@@ -33,13 +33,13 @@ public class Knife4jConfiguration {
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
                         //描述字段支持Markdown语法
-                        .description("# Knife4j RESTful APIs")
-                        .termsOfServiceUrl("https://doc.xiaominfo.com/")
-                        .contact("xiaoymin@foxmail.com")
+                        .description("# 平台 RESTful APIs")
+                        .termsOfServiceUrl("https://localhost:8080/")
+                        .contact("qq1036641205@163.com")
                         .version("1.0")
                         .build())
                 //分组名称
-                .groupName("用户服务")
+                .groupName("平台服务")
                 .select()
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.zyp.controller"))

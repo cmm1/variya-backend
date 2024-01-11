@@ -114,16 +114,11 @@ public class AesUtil {
         try {
             // 唯一key作为密钥
             String uniqueKey = "385f33cb91484b04a177828829081ab7";
-            // 加密前数据，此处数据与前端数据一致(加密内容包含有时间戳)，请注意查看前端加密前数据
-            String src = "{\"username\":\"用户名\",\"password\":\"密码\",\"timestamp\":1628218094188}";
-            System.out.println("密钥:" + uniqueKey);
-            System.out.println("原字符串:" + src);
-            // 加密
-            String encrypt = encrypt(src, uniqueKey);
-            System.out.println("加密：" + encrypt);
+            String encrypt = encrypt("123456", uniqueKey);
+            System.out.println(encrypt);
             // 解密
-            String decrypt = decrypt(encrypt, uniqueKey);
-            System.out.println("解密：" + decrypt);
+//            String decrypt = decrypt("5e304394bd479fdf65b06a77f97f97bc", uniqueKey);
+//            System.out.println(decrypt);
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
