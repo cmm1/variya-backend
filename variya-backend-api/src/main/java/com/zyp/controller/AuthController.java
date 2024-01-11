@@ -4,6 +4,7 @@ package com.zyp.controller;
 import com.zyp.core.ResponseResult;
 import com.zyp.pojo.dto.UserDTO;
 import com.zyp.service.impl.SecurityUserServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 @RequestMapping("/auth")
 @RestController
 public class AuthController {
+
     @Resource
     private SecurityUserServiceImpl securityUserService;
 

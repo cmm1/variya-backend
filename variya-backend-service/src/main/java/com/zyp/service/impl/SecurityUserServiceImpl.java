@@ -43,17 +43,19 @@ import java.util.Objects;
 */
 @Service
 @Slf4j
-@AllArgsConstructor
 public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, SecurityUser> implements SecurityUserService, UserDetailsService {
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Lazy
+    @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
     private RedissonClient redissonClient;
 
+    @Autowired
     private SecurityUserRoleService securityUserRoleService;
-
-    private SecurityRoleService securityRoleService;
 
 
     @Override

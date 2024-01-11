@@ -1,9 +1,8 @@
 package com.zyp.config;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -20,12 +19,13 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity //开启Spring Security的功能
-@AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+    @Autowired
     private AppAuthenticationEntryPoint appAuthenticationEntryPoint;
 
+    @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
 
@@ -55,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/*").anonymous()
                 .antMatchers("/excel/*").anonymous()
                 .antMatchers("/ws/sendMessage").anonymous()
+                .antMatchers("/doc.html","/swagger-ui.html", "/webjars/**", "/v2/api-docs", "/swagger-resources/**", "/configuration/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()

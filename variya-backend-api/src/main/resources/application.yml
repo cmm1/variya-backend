@@ -16,6 +16,9 @@ spring:
   profiles:
     active: dev
     #active: pro
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher #解决springboot和swagger版本冲突
   ############################################################
   #
   # 配置数据源信息
