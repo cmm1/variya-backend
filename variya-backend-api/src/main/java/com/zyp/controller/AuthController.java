@@ -65,10 +65,9 @@ public class AuthController {
         securityUserService.delUser(id);
         return ResponseResult.responseSuccess();
     }
-    @GetMapping("/infos")
-    @ApiOperation("验证token并返回用户信息")
-    public ResponseResult infos(@RequestHeader(value="authorization") String authorization){
-
-        return ResponseResult.responseSuccess();
-    }
+//    @GetMapping("/infos")
+//    @ApiOperation("返回用户信息")
+//    public ResponseResult infos(@RequestHeader(value="authorization") String authorization){
+//        return ResponseResult.responseSuccess(securityUserService.infos(authorization));
+//    }
 }

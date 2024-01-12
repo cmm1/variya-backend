@@ -13,6 +13,7 @@ import com.zyp.service.SecurityUserRoleService;
 import com.zyp.service.SecurityUserService;
 import com.zyp.service.utils.JwtUtil;
 import com.zyp.utils.AesUtil;
+import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
@@ -101,17 +102,23 @@ public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, Sec
         BeanUtils.copyProperties(securityUser, userVO);
         userVO.setToken(token);
         userVO.setStatus(1);
+        userVO.setRoles(extracted(securityUser.getId()));;
+        return userVO;
+    }
+
+    private List<Long> extracted(Long id) {
         //获取用户角色
         List<Long> roles = new ArrayList<>();
-        List<SecurityUserRole> securityUserRoleList = securityUserRoleService.list(new QueryWrapper<SecurityUserRole>().eq("user_id", securityUser.getId()));
+        List<SecurityUserRole> securityUserRoleList = securityUserRoleService.list(new QueryWrapper<SecurityUserRole>().eq("user_id", id));
         if(!CollectionUtils.isEmpty(securityUserRoleList)){
             securityUserRoleList.stream().forEach(securityUserRole -> {
                 roles.add(securityUserRole.getRoleId());
             });
-            userVO.setRoles(roles);
+
         }
-        return userVO;
+        return roles;
     }
+
 
     @Override
     public void saveUser(UserDTO userDTO) {
@@ -246,6 +253,16 @@ public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, Sec
         queryWrapper1.eq("user_id",id);
         securityUserRoleService.remove(queryWrapper1);
     }
+
+//    @Override
+//    public UserDTO infos(String authorization) {
+//        Claims claims = JwtUtil.parseToken(authorization);
+//        String subject = claims.getSubject();
+//        QueryWrapper queryWrapper = new QueryWrapper();
+//        queryWrapper.eq("id",subject);
+//
+//        return new UserDTO();
+//    }
 }
 
 

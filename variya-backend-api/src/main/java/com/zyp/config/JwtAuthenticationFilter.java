@@ -50,6 +50,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if(StringUtils.isEmpty(cacheToken)){
             throw new CredentialsExpiredException("用户未登录");
         }
+        //是否过期
+//        boolean tokenExpired = JwtUtil.isTokenExpired(token);
+//        if(tokenExpired){
+//            throw new CredentialsExpiredException("用户未登录");
+//        }
         //获取用户信息
 
         // 存入SecurityContextHolder

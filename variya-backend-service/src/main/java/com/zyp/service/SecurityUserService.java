@@ -28,4 +28,6 @@ public interface SecurityUserService extends IService<SecurityUser> {
 
 
     void delUser(Long id);
+
+//    UserDTO infos(String authorization);
 }
