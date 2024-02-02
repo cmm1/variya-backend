@@ -28,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    @Autowired
+    private CustomAccessDecisionManager customAccessDecisionManager;
+
 
     @Bean
     @Override
@@ -67,6 +70,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.authorizeRequests()
+                .accessDecisionManager(customAccessDecisionManager); // 设置自定义的AccessDecisionManager
     }
 
     //跨域配置

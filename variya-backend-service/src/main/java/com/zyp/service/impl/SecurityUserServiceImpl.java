@@ -114,7 +114,6 @@ public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, Sec
             securityUserRoleList.stream().forEach(securityUserRole -> {
                 roles.add(securityUserRole.getRoleId());
             });
-
         }
         return roles;
     }
