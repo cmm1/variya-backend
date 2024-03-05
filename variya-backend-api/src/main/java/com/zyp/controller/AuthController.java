@@ -2,7 +2,7 @@ package com.zyp.controller;
 
 
 import com.zyp.core.ResponseResult;
-import com.zyp.pojo.dto.UserDTO;
+import com.zyp.dto.UserDTO;
 import com.zyp.service.impl.SecurityUserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

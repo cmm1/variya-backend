@@ -1,7 +1,7 @@
 package com.zyp.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zyp.pojo.entity.SecurityRole;
+import com.zyp.entity.SecurityRole;
 
 
 /**

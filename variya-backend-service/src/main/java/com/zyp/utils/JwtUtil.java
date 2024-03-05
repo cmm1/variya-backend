@@ -1,8 +1,8 @@
-package com.zyp.service.utils;
+package com.zyp.utils;
 
 
 
-import com.zyp.pojo.entity.SecurityUser;
+import com.zyp.entity.SecurityUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

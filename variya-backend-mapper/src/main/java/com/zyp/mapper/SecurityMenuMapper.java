@@ -1,6 +1,6 @@
 package com.zyp.mapper;
 
-import com.zyp.pojo.entity.SecurityMenu;
+import com.zyp.entity.SecurityMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

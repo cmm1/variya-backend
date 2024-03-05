@@ -3,7 +3,7 @@ package com.zyp.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.zyp.mapper.SecurityUserRoleMapper;
-import com.zyp.pojo.entity.SecurityUserRole;
+import com.zyp.entity.SecurityUserRole;
 import com.zyp.service.SecurityUserRoleService;
 import org.springframework.stereotype.Service;
 

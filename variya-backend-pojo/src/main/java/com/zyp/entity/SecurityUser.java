@@ -1,4 +1,4 @@
-package com.zyp.pojo.entity;
+package com.zyp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

@@ -2,15 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zyp.mapper.SecurityMenuMapper">
+<mapper namespace="com.zyp.mapper.SecurityRoleMenuMapper">
 
-    <resultMap id="BaseResultMap" type="com.zyp.entity.SecurityMenu">
+    <resultMap id="BaseResultMap" type="com.zyp.entity.SecurityRoleMenu">
             <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="parentId" column="parent_id" jdbcType="BIGINT"/>
-            <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
-            <result property="menuPath" column="menu_path" jdbcType="VARCHAR"/>
-            <result property="menuIcon" column="menu_icon" jdbcType="VARCHAR"/>
-            <result property="menuSort" column="menu_sort" jdbcType="VARCHAR"/>
+            <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+            <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
             <result property="deleted" column="deleted" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
@@ -19,8 +16,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,parent_id,menu_name,
-        menu_path,menu_icon,menu_sort,
+        id,role_id,menu_id,
         deleted,create_by,create_time,
         update_by,update_time
     </sql>

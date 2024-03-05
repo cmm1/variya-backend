@@ -1,71 +1,61 @@
-package com.zyp.pojo.entity;
+package com.zyp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
- * 
- * @TableName security_role
+ * 角色菜单中间表;
+ * @TableName security_role_menu
  */
-@TableName(value ="security_role")
+@TableName(value ="security_role_menu")
 @Data
-public class SecurityRole implements GrantedAuthority,Serializable {
+public class SecurityRoleMenu implements Serializable {
     /**
-     * 
+     * id
      */
     @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
-     * 角色名称(需要指定别名)
+     * 权限id
      */
-    @TableField("name")
-    private String authority;
+    private Long roleId;
 
     /**
-     * 角色描述
+     * 菜单id
      */
-    private String description;
+    private String menuId;
 
     /**
      * 是否删除 1:正常 0：已删除
      */
     private Integer deleted;
 
-
     /**
-     * 0 超级管理员
+     * 创建人
      */
-    private Integer roleCode;
+    private String createBy;
 
     /**
-     * 
+     * 创建时间
      */
     private Date createTime;
 
     /**
-     * 
+     * 更新人
      */
-    private String creater;
+    private String updateBy;
 
     /**
-     * 
+     * 更新时间
      */
     private Date updateTime;
 
-    /**
-     * 
-     */
-    private String updater;
-
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }

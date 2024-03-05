@@ -1,4 +1,4 @@
-package com.zyp.pojo.dto;
+package com.zyp.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;

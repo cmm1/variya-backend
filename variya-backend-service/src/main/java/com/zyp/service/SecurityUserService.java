@@ -1,9 +1,9 @@
 package com.zyp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zyp.pojo.dto.UserDTO;
-import com.zyp.pojo.entity.SecurityUser;
-import com.zyp.pojo.vo.UserVO;
+import com.zyp.dto.UserDTO;
+import com.zyp.entity.SecurityUser;
+import com.zyp.vo.UserVO;
 
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.zyp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zyp.pojo.entity.SecurityRole;
+import com.zyp.entity.SecurityRole;
 
 /**
 * @author zyp

@@ -3,9 +3,9 @@ package com.zyp.config;
 
 import com.zyp.consts.CacheKeyConst;
 
-import com.zyp.pojo.entity.SecurityUser;
+import com.zyp.entity.SecurityUser;
 
-import com.zyp.service.utils.JwtUtil;
+import com.zyp.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;

@@ -1,76 +1,71 @@
-package com.zyp.pojo.entity;
+package com.zyp.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
- * 菜单表
- * @TableName security_menu
+ * 
+ * @TableName security_role
  */
-@TableName(value ="security_menu")
+@TableName(value ="security_role")
 @Data
-public class SecurityMenu implements Serializable {
+public class SecurityRole implements GrantedAuthority,Serializable {
     /**
-     * id
+     * 
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
-     * 父id
+     * 角色名称(需要指定别名)
      */
-    private Long parentId;
+    @TableField("name")
+    private String authority;
 
     /**
-     * 菜单名称
+     * 角色描述
      */
-    private String menuName;
-
-    /**
-     * 菜单路径
-     */
-    private String menuPath;
-
-    /**
-     * 菜单icon
-     */
-    private String menuIcon;
-
-    /**
-     * 排序值
-     */
-    private String menuSort;
+    private String description;
 
     /**
      * 是否删除 1:正常 0：已删除
      */
     private Integer deleted;
 
-    /**
-     * 创建人
-     */
-    private String createBy;
 
     /**
-     * 创建时间
+     * 0 超级管理员
+     */
+    private Integer roleCode;
+
+    /**
+     * 
      */
     private Date createTime;
 
     /**
-     * 更新人
+     * 
      */
-    private String updateBy;
+    private String creater;
 
     /**
-     * 更新时间
+     * 
      */
     private Date updateTime;
 
+    /**
+     * 
+     */
+    private String updater;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
 }

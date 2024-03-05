@@ -1,6 +1,6 @@
 package com.zyp.service;
 
-import com.zyp.pojo.entity.SecurityMenu;
+import com.zyp.entity.SecurityMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
