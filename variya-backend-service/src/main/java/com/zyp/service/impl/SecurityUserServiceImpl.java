@@ -3,10 +3,12 @@ package com.zyp.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zyp.consts.CacheKeyConst;
+import com.zyp.entity.SecurityRole;
 import com.zyp.mapper.SecurityUserMapper;
 import com.zyp.dto.UserDTO;
 import com.zyp.entity.SecurityUser;
 import com.zyp.entity.SecurityUserRole;
+import com.zyp.service.SecurityRoleService;
 import com.zyp.vo.UserVO;
 import com.zyp.service.SecurityUserRoleService;
 import com.zyp.service.SecurityUserService;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
 * @author zyp
@@ -55,6 +58,8 @@ public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, Sec
     @Autowired
     private SecurityUserRoleService securityUserRoleService;
 
+    @Autowired
+    private SecurityRoleService securityRoleService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -99,21 +104,31 @@ public class SecurityUserServiceImpl extends ServiceImpl<SecurityUserMapper, Sec
         BeanUtils.copyProperties(securityUser, userVO);
         userVO.setToken(token);
         userVO.setStatus(1);
-        userVO.setRoles(extracted(securityUser.getId()));;
+        userVO.setRoles(extracted(securityUser.getId()));
         return userVO;
     }
 
-    private List<Long> extracted(Long id) {
-        //获取用户角色
-        List<Long> roles = new ArrayList<>();
+    private List<String> permission(Long id) {
+        //获取用户菜单
+        List<String> permission = new ArrayList<>();
         List<SecurityUserRole> securityUserRoleList = securityUserRoleService.list(new QueryWrapper<SecurityUserRole>().eq("user_id", id));
         if(!CollectionUtils.isEmpty(securityUserRoleList)){
-            securityUserRoleList.stream().forEach(securityUserRole -> {
-                roles.add(securityUserRole.getRoleId());
-            });
+            List<Long> roleIds = securityUserRoleList.stream().map(SecurityUserRole::getRoleId).collect(Collectors.toList());
+            List<SecurityRole> securityRoles = securityRoleService.list(new QueryWrapper<SecurityRole>().in("id", roleIds));
+            securityRoles.stream().map(SecurityRole::getAuthority);
         }
-        return roles;
+        return permission;
     }
+
+    private List<Long> extracted(Long id) {
+            //获取用户角色
+            List<Long> roles = new ArrayList<>();
+            List<SecurityUserRole> securityUserRoleList = securityUserRoleService.list(new QueryWrapper<SecurityUserRole>().eq("user_id", id));
+            if(!CollectionUtils.isEmpty(securityUserRoleList)){
+                roles = securityUserRoleList.stream().map(SecurityUserRole::getRoleId).collect(Collectors.toList());
+            }
+            return roles;
+        }
 
 
     @Override

@@ -61,8 +61,10 @@ public class UserVO implements  Serializable {
 
     private boolean enabled;
 
-
     private List<Long> roles;
+
+    //菜单权限
+    private List<String> permission;
     @ApiModelProperty(value = "token", name = "token", dataType = "String")
     private String token;
 
